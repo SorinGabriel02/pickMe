@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+
+import appContext from "../context/appContext";
 
 export default function Header() {
   return (

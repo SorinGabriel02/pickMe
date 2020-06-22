@@ -4,6 +4,7 @@ const AppContext = React.createContext();
 
 function AppContextProvider(props) {
   const [photos, setPhotos] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     fetch(
@@ -26,9 +27,20 @@ function AppContextProvider(props) {
     });
     setPhotos(toggled);
   };
-  console.log(photos);
+
+  const manageCart = (pic) => {
+    if (cartItems.some((item) => item.id === pic.id)) {
+      const removedItem = cartItems.filter((item) => item.id !== pic.id);
+      setCartItems(removedItem);
+    } else {
+      setCartItems([...cartItems, pic]);
+    }
+  };
+
   return (
-    <AppContext.Provider value={{ photos }}>
+    <AppContext.Provider
+      value={{ photos, toggleFavorite, cartItems, manageCart }}
+    >
       {props.children}
     </AppContext.Provider>
   );
