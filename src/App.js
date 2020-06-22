@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Cart from "./pages/Cart";
-import Images from "./pages/Images";
+import Photos from "./pages/Photos";
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
       <Header />
       <Switch>
         <Route exact path="/">
-          <Images />
+          <Photos />
         </Route>
         <Route path="/cart">
           <Cart />
